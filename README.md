@@ -21,7 +21,7 @@ void encrypt(uint8_t* data_buffer, size_t data_size, uint8_t* key_buffer, size_t
 }
 ```
 
-Which xor^s continuously a buffer with a with key,
+Which xor^s continuously a buffer with key,
 how much faster can it get by optimizing the code?
 
 Additionally see how different compilers and 
