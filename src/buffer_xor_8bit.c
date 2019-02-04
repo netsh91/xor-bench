@@ -1,11 +1,22 @@
-# xor-bench
+#include "_helper.c"
 
-This project was supposed to become a file encryption program, 
-but getting it run faster turned out to be much more exiting.
 
-Given a naive algorithm:
+int main(int argc, char **argv)
+{
+    struct TestSetup *test_setup = test_init(argc, argv);
 
-```c
+    clock_t start = clock();
+
+    encrypt(test_setup->buffer1, test_setup->buffer1_size, test_setup->buffer2, test_setup->buffer2_size);
+
+    clock_t  end = clock();
+
+    test_end(start, end, test_setup);
+
+    return 0;
+}
+
+
 void encrypt(uint8_t* data_buffer, size_t data_size, uint8_t* key_buffer, size_t key_size)
 {
     size_t key_index = 0;
@@ -19,10 +30,3 @@ void encrypt(uint8_t* data_buffer, size_t data_size, uint8_t* key_buffer, size_t
         key_index++;
     }
 }
-```
-
-Which xor^s continuously a buffer with a with key,
-how much faster can it get by optimizing the code?
-
-Additionally see how different compilers and 
-compiler optimizations affect performance.
